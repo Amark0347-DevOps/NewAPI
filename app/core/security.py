@@ -2,7 +2,7 @@ from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
 from datetime import timedelta, datetime
 from ..core.config import settings
-from fastapi import Request, Header
+from fastapi import  Header
 ##################################################################
 async def create_access_token(data:dict,expires_delta:timedelta):
     data_copy = data.copy()
@@ -49,7 +49,7 @@ async def root(token: str = Header(..., alias="Authorization")):
         return token.removeprefix("Bearer ")
 
 ####################################################################################################
-async def get_current_user(token:str = Depends(root)):
+async def GetCurrentUser(token:str = Depends(root)):
     credentials_exception = HTTPException(
         status_code=401,
         detail="Could not validate credentials",
@@ -59,5 +59,5 @@ async def get_current_user(token:str = Depends(root)):
     if payload is None:
         raise credentials_exception
     else:
-        return payload.get("sub")
+        return payload
     
