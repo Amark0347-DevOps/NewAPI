@@ -15,19 +15,19 @@ from app.api.v1.trainer_endpoint.add_schedule import Trainer_schedule_router
 from app.services.aws_service.s3_bucket import s3_manager
 app = FastAPI()
 #################################### Cors Middleware #########################################
-origins = [
-    "http://localhost",
-    "http://localhost:5000"
-]
+# origins = [
+#     "http://localhost",
+#     "http://localhost:5000"
+# ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    # allow_methods=["GET", "POST", "PUT", "DELETE",],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     # allow_methods=["GET", "POST", "PUT", "DELETE",],
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 #################################### Event Handlers #########################################
 app.add_event_handler("startup", s3_manager.create_bucket)
 app.add_event_handler("startup", connect_mongodb)

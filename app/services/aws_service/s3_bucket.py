@@ -9,8 +9,10 @@ class S3Manager:
         self.s3 = boto3.client(
             's3', 
             region_name=settings.aws_region, 
-            aws_access_key_id=settings.aws_access_key, 
-            aws_secret_access_key=settings.aws_secrect_key
+            # aws_access_key_id=settings.aws_access_key, 
+            aws_access_key_id="AKIA5FTZCVGWPRAA4566", 
+            # aws_secret_access_key=settings.aws_secrect_key
+            aws_secret_access_key="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"
         )
 
     async def create_bucket(self):
