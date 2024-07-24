@@ -1,0 +1,83 @@
+version: '3.8'
+services:
+  fastapi:
+      build:
+        context: .
+        dockerfile: Dockerfile
+        args:
+          SECRECT_KEY: ${SECRECT_KEY}
+          ALGORITHEM: ${ALGORITHEM}
+          TOKEN_EXPIRY_TIME_NEW: ${TOKEN_EXPIRY_TIME_NEW}
+          MONGO_URL: ${MONGO_URL}
+          DATABASE: ${DATABASE}
+          USERCOLLECTION: ${USERCOLLECTION}
+          ADMINCOLLECTION: ${ADMINCOLLECTION}
+          REDIS_URL: ${REDIS_URL}
+          ADMIN: ${ADMIN}
+          TRAINER: ${TRAINER}
+          USER: ${USER}
+          AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+          AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+          AWS_REGION: ${AWS_REGION}
+          AWS_S3_BUCKET: ${AWS_S3_BUCKET}
+      ports:
+        - "4522:4522"
+      container_name: fastapi_app
+      networks:
+        - mylove
+      image: chauhanlove
+      # environment:
+      #   SECRECT_KEY: ${SECRECT_KEY}
+      #   ALGORITHEM: ${ALGORITHEM}
+      #   TOKEN_EXPIRY_TIME_NEW: 70
+      #   MONGO_URL: ${MONGO_URL}
+      #   DATABASE: ${DATABASE}
+      #   USERCOLLECTION: ${USERCOLLECTION}
+      #   ADMINCOLLECTION: ${ADMINCOLLECTION}
+      #   REDIS_URL: ${REDIS_URL}
+      #   ADMIN: ${ADMIN}
+      #   TRAINER: ${TRAINER}
+      #   USER: ${USER}
+      #   AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+      #   AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+      #   AWS_REGION: ${AWS_REGION}
+      #   AWS_S3_BUCKET: ${AWS_S3_BUCKET}
+      depends_on:
+        - my-redis
+        - my-mongo
+      
+  my-mongo:
+    image: mongo
+    container_name: chauhanji
+    ports:
+      - "27017:27017"
+    networks:
+      - mylove
+    volumes:
+      - mymongo:/data/db
+
+
+
+  my-redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - myredis:/data
+    networks:
+      - mylove
+    container_name: myredis
+
+
+networks:
+  mylove:
+    name: baby
+
+volumes:
+  mymongo:
+    driver: local
+  
+  myredis:
+    driver: local
+
+

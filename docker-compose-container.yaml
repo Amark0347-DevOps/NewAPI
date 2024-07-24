@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  mycontainerji:
+    image: chauhanlove
+    container_name: poojababy
+    ports:
+      - "4522:4522"
+    networks:
+      - mylove
+    env_file:
+      - ./app/core/.env
+
+
+networks:
+  mylove:
+    external:
+      name: baby
+    # environment:
+    #     SECRECT_KEY: ${SECRECT_KEY}
+    #     ALGORITHEM: ${ALGORITHEM}
+    #     TOKEN_EXPIRY_TIME_NEW: ${ALGORITHEM}
+    #     MONGO_URL: ${MONGO_URL}
+    #     DATABASE: ${DATABASE}
+    #     USERCOLLECTION: ${USERCOLLECTION}
+    #     ADMINCOLLECTION: ${ADMINCOLLECTION}
+    #     REDIS_URL: ${REDIS_URL}
+    #     ADMIN: ${ADMIN}
+    #     TRAINER: ${TRAINER}
+    #     USER: ${USER}
+    #     AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+    #     AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+    #     AWS_REGION: ${AWS_REGION}
+    #     AWS_S3_BUCKET: ${AWS_S3_BUCKET}

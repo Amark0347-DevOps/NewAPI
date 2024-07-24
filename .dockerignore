@@ -1,0 +1,6 @@
+venv
+.env
+test.py
+Dockerfile
+.dockerignore
+docker-compose.yaml
