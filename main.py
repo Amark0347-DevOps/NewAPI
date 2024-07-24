@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from uvicorn import run
 from fastapi.middleware.cors import CORSMiddleware
 from app.mongo.mongodb import connect_mongodb, shutdown_mongodb
-# from app.core.rate_limiting import connect_Redis_ratelimiter, shutdown_redis_ratelimiter
+from app.core.rate_limiting import connect_Redis_ratelimiter, shutdown_redis_ratelimiter
 from app.core.rate_limiting import redisobj
 from app.api.v1.admin_endpoints.signup import admin_signup_router
 from app.api.v1.admin_endpoints.login import admin_login_router
@@ -33,8 +33,8 @@ app.add_middleware(
 app.add_event_handler("startup", s3_manager.create_bucket)
 app.add_event_handler("startup", connect_mongodb)
 app.add_event_handler("shutdown", shutdown_mongodb)
-app.add_event_handler("startup", redisobj.connect_Redis_ratelimiter)
-app.add_event_handler("shutdown", redisobj.shutdown_redis_ratelimiter)
+app.add_event_handler("startup",  connect_Redis_ratelimiter)
+app.add_event_handler("shutdown", shutdown_redis_ratelimiter)
 #################################### Admin Routers ################################################
 app.include_router(admin_signup_router)
 app.include_router(admin_login_router)

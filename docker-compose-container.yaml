@@ -23,7 +23,6 @@ networks:
     #     DATABASE: ${DATABASE}
     #     USERCOLLECTION: ${USERCOLLECTION}
     #     ADMINCOLLECTION: ${ADMINCOLLECTION}
-    #     REDIS_URL: ${REDIS_URL}
     #     ADMIN: ${ADMIN}
     #     TRAINER: ${TRAINER}
     #     USER: ${USER}

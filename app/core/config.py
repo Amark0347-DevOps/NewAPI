@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     mongo_database:str = os.getenv("DATABASE")
     mongo_userCollection:str = os.getenv("USERCOLLECTION")
     mongo_adminCollection:str = os.getenv("ADMINCOLLECTION")
-    # redis_ratelimiting_url:str = os.getenv("REDIS_URL")
+    redis_ratelimiting_url:str = os.getenv("REDIS_URL")
     # redis_ratelimiting_url:str = "redis://localhost"
     aws_access_key:str= "AKIARWGZY7O43BFPMPO2"
     aws_secrect_key:str= "2P8IccNLgV1+5fRIsy8MuLtvI3lljOn76Jh8PtN6"
