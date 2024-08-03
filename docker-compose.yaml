@@ -5,27 +5,43 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        REDIS_URL: ${REDIS_URL}
-        SECRECT_KEY: ${SECRECT_KEY}
-        ALGORITHEM: ${ALGORITHEM}
-        TOKEN_EXPIRY_TIME_NEW: ${TOKEN_EXPIRY_TIME_NEW}
-        MONGO_URL: ${MONGO_URL}
-        DATABASE: ${DATABASE}
-        USERCOLLECTION: ${USERCOLLECTION}
-        ADMINCOLLECTION: ${ADMINCOLLECTION}
-        ADMIN: ${ADMIN}
-        TRAINER: ${TRAINER}
-        USER: ${USER}
-        AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
-        AWS_SECRET_KEY: ${AWS_SECRET_KEY}
-        AWS_REGION: ${AWS_REGION}
-        AWS_S3_BUCKET: ${AWS_S3_BUCKET}
+        REDIS_URL: o
+        SECRECT_KEY: o
+        ALGORITHEM: o
+        TOKEN_EXPIRY_TIME_NEW: o
+        MONGO_URL: o
+        DATABASE: o
+        USERCOLLECTION: o
+        ADMINCOLLECTION: o
+        ADMIN: o
+        TRAINER: o
+        USER: o
+        AWS_ACCESS_KEY: o
+        AWS_SECRET_KEY: o
+        AWS_REGION: o
+        AWS_S3_BUCKET: o
+      # args:
+      #   REDIS_URL: ${REDIS_URL}
+      #   SECRECT_KEY: ${SECRECT_KEY}
+      #   ALGORITHEM: ${ALGORITHEM}
+      #   TOKEN_EXPIRY_TIME_NEW: ${TOKEN_EXPIRY_TIME_NEW}
+      #   MONGO_URL: ${MONGO_URL}
+      #   DATABASE: ${DATABASE}
+      #   USERCOLLECTION: ${USERCOLLECTION}
+      #   ADMINCOLLECTION: ${ADMINCOLLECTION}
+      #   ADMIN: ${ADMIN}
+      #   TRAINER: ${TRAINER}
+      #   USER: ${USER}
+      #   AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+      #   AWS_SECRET_KEY: ${AWS_SECRET_KEY}
+      #   AWS_REGION: ${AWS_REGION}
+      #   AWS_S3_BUCKET: ${AWS_S3_BUCKET}
     ports:
       - "4522:4522"
     container_name: fastapi_app
     networks:
       - mylove
-    image: chauhanlove
+    image: chauhanji
     environment:
       REDIS_URL: redis://my-redis
       SECRECT_KEY: ${SECRECT_KEY}

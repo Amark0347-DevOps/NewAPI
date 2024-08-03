@@ -7,7 +7,7 @@ from ..loggers.logger import logger
 
 class MongoDB:
     def __init__(self):
-        self.client = AsyncIOMotorClient(settings.mongo_url, maxPoolSize=10, minPoolSize=5)
+        self.client = AsyncIOMotorClient(settings.mongo_url, maxPoolSize=10, minPoolSize=1, maxIdleTimeMS=60000)
         self.db = self.client.get_database("safeshooters")
         self.collection = self.db.get_collection("Chauhan")
         
